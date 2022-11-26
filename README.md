@@ -33,9 +33,9 @@ Codes for running analysis on students' confusion levels via EEG-based deep neur
 | 10        | 13.00 | 100.00 | 100.00 | 100.00 | 100.00 | 100.00 | 100.00 | 100.00 | 100.00 | 95.00 | 90.80 |
 | **Average** | 76.70 | 99.50 | 100.00 | 88.70 | 96.20 | 92.40 | 100.00 | 98.30 | 96.40 | 97.60 | 94.58 |
 ## Resources
-Dataset:
+Dataset: [Link](https://www.kaggle.com/datasets/wanghaohan/confused-eeg)
 
-EEGNet:
+EEGNet Framework: [Link](https://github.com/braindecode/braindecode)
 
 ## Dependences
 
