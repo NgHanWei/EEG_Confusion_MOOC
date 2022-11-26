@@ -26,6 +26,7 @@ parser = argparse.ArgumentParser(
     description='Video-Independent EEG Confusion Classification')
 parser.add_argument('-vid', type=int,
                     help='Target Video', required=True)
+parser.add_argument('--normalize',default=False, help='Normalize Data', action='store_true')
 args = parser.parse_args()
 
 logging.basicConfig(format='%(asctime)s %(levelname)s : %(message)s',
@@ -39,6 +40,7 @@ set_random_seeds(seed=2022, cuda=True)
 BATCH_SIZE = 16
 TRAIN_EPOCH = 100
 targ_vid = args.vid
+normalize = args.normalize
 
 data = pd.read_csv("./input/EEG_data.csv")
 print(data.info())
@@ -133,8 +135,9 @@ for i in range(0,len(vid_marker)):
     for j in range(0,steps+1):
         x_vid_slice = x_vid[j:sliding_window+j].T
 
-        # row_sums = x_vid_slice.sum(axis=1)
-        # x_vid_slice = x_vid_slice / row_sums[:, np.newaxis]
+        if normalize == True:
+            row_sums = x_vid_slice.sum(axis=1)
+            x_vid_slice = x_vid_slice / row_sums[:, np.newaxis]
 
         x_vid_slice = x_vid_slice[np.newaxis,:,:].astype(np.float32)
 
