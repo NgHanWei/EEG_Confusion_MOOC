@@ -63,4 +63,4 @@ python LOSVO_DCN.py -vid 5 -subj 5                      ### The same settings as
 ```
 
 
-Alternatively, to obtain the LOSVO accuracy for all subjects for each individual video, run `LOSVO_DCN_all.py`.
+Alternatively, to obtain the LOSVO accuracy for all subjects for each individual video, run `LOSVO_DCN_all.py`, with the option to normalize the EEG data using the normalize argument `--normalize`.
