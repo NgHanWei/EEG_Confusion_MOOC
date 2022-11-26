@@ -46,13 +46,10 @@ usage: python LOSVO_DCN.py
 Obtain list of subjects to use as training data for subject-indepdendent baseline model
 
 Positional Arguments:
-    DATAPATH                            Datapath for the pre-processed EEG signals file
+    ROOTDIR                            Datapath for the pre-processed EEG signals file
 
 Optional Arguments:
     -start START                        Set start of range for subjects, minimum 1 and maximum 54
-    -end END                            Set end of range for subjects, minimum 2 and maximum 55
-    -subj SUBJ                          Set the subject number to run feature extraction on, will override the -start and -end functions if used
-    -trial TRIAL                        Set the number of test trials from target subject to create baseline. Set number of trials to 0 to use target validation data
 ```
 
 run `LOSVO_DCN_all.py` to run all subjects.
