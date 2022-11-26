@@ -40,16 +40,18 @@ EEGNet Framework: [Link](https://github.com/braindecode/braindecode)
 ## Dependences
 
 ## Run
+
+Download the input folder from the dataset link.
+
 ```
 usage: python LOSVO_DCN.py
 
-Obtain list of subjects to use as training data for subject-indepdendent baseline model
-
-Positional Arguments:
-    ROOTDIR                            Datapath for the pre-processed EEG signals file
+Trains and Evaluates a binary classifier for students' confusion levels based on the EEGNet framework under the leave-one-subject-and-video-out (LOSVO) paradigm.
 
 Optional Arguments:
-    -start START                        Set start of range for subjects, minimum 1 and maximum 54
+    -vid VID                            Set the video ID which data will be removed from training the classifier
+    -subj SUBJ                          Set the subject whose data will be removed from training the classifier
+
 ```
 
-run `LOSVO_DCN_all.py` to run all subjects.
+Alternatively, to obtain the LOSVO accuracy for all subjects for each individual video, run `LOSVO_DCN_all.py`.
