@@ -51,7 +51,16 @@ Trains and Evaluates a binary classifier for students' confusion levels based on
 Optional Arguments:
     -vid VID                            Set the video ID which data will be removed from training the classifier
     -subj SUBJ                          Set the subject whose data will be removed from training the classifier
+    --NORMALIZE                         Default is set to false, utilize this argument to normalize the EEG data
 
 ```
+
+For example, to obtain the accuracy of subject 5 for video 5 with normalization on EEG data, the following code can be run
+```
+python LOSVO_DCN.py -vid 5 -subj 5 --normalize
+
+python LOSVO_DCN.py -vid 5 -subj 5                      ### The same settings as the above, but the raw EEG data is used without normalization
+```
+
 
 Alternatively, to obtain the LOSVO accuracy for all subjects for each individual video, run `LOSVO_DCN_all.py`.
