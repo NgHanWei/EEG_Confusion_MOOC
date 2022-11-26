@@ -22,13 +22,10 @@ import logging
 import sys
 import torch
 
-# parser = argparse.ArgumentParser(
-#     description='Subject and Video-Independent EEG Confusion Classification')
-# parser.add_argument('-vid', type=int,
-#                     help='Target Video', required=True)
-# parser.add_argument('-subj', type=int,
-#                     help='Target Subject', required=True)
-# args = parser.parse_args()
+parser = argparse.ArgumentParser(
+    description='Subject and Video-Independent EEG Confusion Classification')
+parser.add_argument('--normalize',default=False, help='Normalize Data', action='store_true')
+args = parser.parse_args()
 
 logging.basicConfig(format='%(asctime)s %(levelname)s : %(message)s',
                     level=logging.INFO, stream=sys.stdout)
@@ -40,6 +37,9 @@ torch.backends.cudnn.deterministic = True
 set_random_seeds(seed=2022, cuda=True)
 BATCH_SIZE = 16
 TRAIN_EPOCH = 100
+
+normalize = args.normalize
+show = True
 
 accuracy_array = np.zeros((10, 10))
 for t_vid in range(1,11):
@@ -60,10 +60,17 @@ for t_vid in range(1,11):
         print(data.head())
 
         data = pd.get_dummies(data)
-
-        # cor_matrix = data.corr()
-        # sns.heatmap(cor_matrix,annot=True)
-        # plt.show()
+        
+        if show == True:
+            sns.set(font_scale=0.7)
+            cor_matrix = data.corr()
+            mask = np.triu(np.ones_like(cor_matrix, dtype=np.bool))
+            plt.figure(figsize=(16, 6))
+            heatmap = sns.heatmap(cor_matrix,mask=mask,vmin=-1, vmax=1,cmap='BrBG',square = True, annot=True, annot_kws={"fontsize":5})
+            heatmap.set_xticklabels(heatmap.get_xticklabels(), rotation=45, horizontalalignment='right')
+            # heatmap.set_title('Correlation Heatmap', fontdict={'fontsize':18}, pad=12);
+            plt.show()
+            show = False
 
         # Pre-Processing
         subj_marker = []
@@ -88,8 +95,8 @@ for t_vid in range(1,11):
         print(vid_marker)
         print(len(vid_marker))
 
-        data.drop(columns = ['predefinedlabel','Attention','Mediation'],inplace=True)
-        y= data.pop('user-definedlabeln')
+        data.drop(columns = ['Predefined_Label','Attention','Mediation'],inplace=True)
+        y= data.pop('User-defined_Label')
         print(y.shape)
         for i in range(0,len(y)):
             if y[i] <= 0.0:
@@ -143,8 +150,9 @@ for t_vid in range(1,11):
                 x_vid_slice = x_vid[j:sliding_window+j].T
 
                 # Normalization
-                # row_sums = x_vid_slice.sum(axis=1)
-                # x_vid_slice = x_vid_slice / row_sums[:, np.newaxis]
+                if normalize == True:
+                    row_sums = x_vid_slice.sum(axis=1)
+                    x_vid_slice = x_vid_slice / row_sums[:, np.newaxis]
 
                 x_vid_slice = x_vid_slice[np.newaxis,:,:].astype(np.float32)
 
@@ -219,7 +227,7 @@ for t_vid in range(1,11):
             json.dump(test_loss, f)
 
         accuracy = (1-test_loss['misclass']) * 100
-        accuracy_array[t_vid-1,t_subj-1] = accuracy
+        accuracy_array[t_vid-1,t_subj-1] = int(accuracy)
 
 
         np.savetxt("firstarray.csv", accuracy_array, delimiter=",")
