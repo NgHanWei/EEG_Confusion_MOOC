@@ -48,9 +48,11 @@ usage: python LOSVO_DCN.py [-vid VID] [-subj SUBJ] [--normalize]
 
 Trains and Evaluates a binary classifier for students' confusion levels based on the EEGNet framework under the leave-one-subject-and-video-out (LOSVO) paradigm.
 
-Optional Arguments:
+Required Arguments:
     -vid VID                            Set the video ID which data will be removed from training the classifier
     -subj SUBJ                          Set the subject whose data will be removed from training the classifier
+
+Optional Arguments:
     --normalize                         Default is set to false, utilize this argument to normalize the EEG data
 
 ```
