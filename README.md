@@ -41,7 +41,7 @@ EEGNet Framework: [Link](https://github.com/braindecode/braindecode)
 
 ## Run
 
-Download the input folder from the dataset link.
+Download the input folder from the dataset link (requires a Kaggle account) and put in the main folder directory along with the code. Otherwise, simply download the data from this repository.
 
 ```
 usage: python LOSVO_DCN.py
@@ -58,9 +58,15 @@ Optional Arguments:
 For example, to obtain the accuracy of subject 5 for video 5 with normalization on EEG data, the following code can be run
 ```
 python LOSVO_DCN.py -vid 5 -subj 5 --normalize
+```
 
-python LOSVO_DCN.py -vid 5 -subj 5                      ### The same settings as the above, but the raw EEG data is used without normalization
+Or without normalization:
+```
+python LOSVO_DCN.py -vid 5 -subj 5
 ```
 
 
 Alternatively, to obtain the LOSVO accuracy for all subjects for each individual video, run `LOSVO_DCN_all.py`, with the option to normalize the EEG data using the normalize argument `--normalize`.
+```
+python LOSO_DCN_all.py --normalize
+```
