@@ -40,7 +40,7 @@ EEGNet Framework: [Link](https://github.com/braindecode/braindecode)
 ## Dependences
 
 ## Run
-
+### Subject-and-Video-Independent 
 Download the input folder from the dataset link (requires a Kaggle account) and put in the main folder directory along with the code. Otherwise, simply download the data from this repository.
 
 ```
@@ -74,6 +74,7 @@ python LOSVO_DCN_all.py --normalize
 ```
 
 ***
+### Subject-Independent and Video-Independent
 Likewise, subject-independent and video-independent models are available for testing.
 
 Subject-independent:
