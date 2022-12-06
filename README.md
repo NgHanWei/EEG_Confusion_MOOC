@@ -70,5 +70,17 @@ python LOSVO_DCN.py -vid 5 -subj 5
 
 Alternatively, to obtain the LOSVO accuracy for all subjects for each individual video, run `LOSVO_DCN_all.py`, with the option to normalize the EEG data using the normalize argument `--normalize`.
 ```
-python LOSO_DCN_all.py --normalize
+python LOSVO_DCN_all.py --normalize
+```
+
+Likewise, subject-independent and video-independent models are available for testing.
+
+Subject-independent:
+```
+python LOSO_DCN.py -subj SUBJ --normalize
+```
+
+Video-independent:
+```
+python LOVO_DCN.py -vid VID --normalize
 ```
