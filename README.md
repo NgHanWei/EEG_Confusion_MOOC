@@ -37,7 +37,7 @@ Dataset: [Link](https://www.kaggle.com/datasets/wanghaohan/confused-eeg)
 
 EEGNet Framework: [Link](https://github.com/braindecode/braindecode)
 
-## Dependences
+## Dependencies
 
 ## Run
 ### Subject-and-Video-Independent 
