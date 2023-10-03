@@ -1,6 +1,9 @@
 # EEG_Confusion_MOOC
 Codes for running analysis on students' confusion levels via EEG-based deep neural network classsification. The leave-one-subject-and-video-out (LOSVO) paradigm is introduced here as a means to accurately simulate a plug-and-play implementation of the proposed classification framework into real-world classrooms.
 
+# Plug-and-Play EEG-Based Student Confusion Classification in Massive Online Open Courses (AIED 2023)
+https://link.springer.com/chapter/10.1007/978-3-031-36272-9_57
+
 ## Results Overview
 
 ### Non-Normalized EEG Data
